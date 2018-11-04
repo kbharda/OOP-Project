@@ -70,6 +70,9 @@ namespace aid {
 		else if (day < 1 || day > this->mdays(month, year)) {
 			this->errCode(DAY_ERROR);
 		}
+		else if (year * 372 + month * this->mdays(month, year) + day < min_date) {
+			this->errCode(PAST_ERROR);
+		}
 		else {
 			this->year = year;
 			this->month = month;
@@ -83,7 +86,6 @@ namespace aid {
 			this->year = 0;
 			this->month = 0;
 			this->days = 0;
-			this->errorState = NO_ERROR;
 			this->comparator = 0;
 		}
 
@@ -122,7 +124,7 @@ namespace aid {
 	{
 		if (!this->is_empty() && !rhs.is_empty())
 		{
-			return this->year != rhs.year && this->month != rhs.month && this->days != rhs.days;
+			return this->year != rhs.year || this->month != rhs.month || this->days != rhs.days;
 		}
 		else
 		{
@@ -137,7 +139,7 @@ namespace aid {
 
 		if (!this->is_empty() && !rhs.is_empty())
 		{
-			return this->year < rhs.year && this->month < rhs.month && this->days < rhs.days;
+			return this->year < rhs.year || this->month < rhs.month || this->days < rhs.days;
 		}
 		else
 		{
@@ -150,7 +152,7 @@ namespace aid {
 	{
 		if (!this->is_empty() && !rhs.is_empty())
 		{
-			return this->year > rhs.year && this->month > rhs.month && this->days > rhs.days;
+			return this->year > rhs.year || this->month || rhs.month && this->days || rhs.days;
 		}
 		else
 		{
@@ -189,15 +191,17 @@ namespace aid {
 	{
 		// TODO: insert return statement here
 		char dash;
-
-		istr >> this->year >> dash;
-		istr >> this->month >> dash;
-		istr >> this->days;
+		int year, month, day;
+		istr.clear();
+		istr >> year >> dash >> month >> dash >> day;
 
 		if (istr.fail())
 		{
 			errCode(CIN_FAILED);
 			return istr;
+		}
+		else {
+			*this = Date(year, month, day);
 		}
 		return istr;
 	}

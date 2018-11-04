@@ -18,7 +18,7 @@
     <ClCompile Include="Date.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\MS1\244_ms1_tester.cpp">
+    <ClCompile Include="..\..\..\244_ms1_tester.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
