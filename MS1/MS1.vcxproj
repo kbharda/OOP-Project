@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\MS1\244_ms1_tester.cpp" />
     <ClCompile Include="Date.cpp" />
-    <ClCompile Include="ms1_tester.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Date.h" />
