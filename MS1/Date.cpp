@@ -18,6 +18,7 @@
 using namespace std;
 using namespace aid;
 
+
 #define NO_ERROR   0  
 #define CIN_FAILED 1  
 #define DAY_ERROR  2  
@@ -152,7 +153,7 @@ namespace aid {
 	{
 		if (!this->is_empty() && !rhs.is_empty())
 		{
-			return this->year > rhs.year || this->month || rhs.month && this->days || rhs.days;
+			return ((this->year > rhs.year) || (this->month || rhs.month)) && (this->days || rhs.days);
 		}
 		else
 		{
@@ -209,7 +210,12 @@ namespace aid {
 	std::ostream& Date::write(std::ostream & ostr) const
 	{
 
-		ostr << this->year << "/" << this->month << "/" << this->days << std::endl;
+		ostr << this->year << "/";
+		ostr.fill('0');
+		ostr.width(2);
+		ostr << this->month << "/";
+		ostr.width(2);
+		ostr << this->days;
 		return ostr;
 	}
 
