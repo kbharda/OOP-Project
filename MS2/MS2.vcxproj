@@ -77,11 +77,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Error.cpp" />
-    <ClCompile Include="ms2_tester_prof.cpp" />
+    <ClCompile Include="Date.cpp" />
+    <ClCompile Include="ms2_tester.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Error.h" />
+    <ClInclude Include="Date.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
