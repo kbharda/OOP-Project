@@ -22,7 +22,7 @@ namespace aid {
 	//One Argument Constructor
 	Error::Error(const char * errorMessage)
 	{
-		if (errorMessage == nullptr || errorMessage == "")
+		if (errorMessage == nullptr || errorMessage[0] == '\0')
 		{
 			this->errorMessage = '\0';
 		}
@@ -63,7 +63,7 @@ namespace aid {
 	void Error::message(const char* str)
 	{
 		delete[] this->errorMessage;
-		if (str != nullptr && str != "")
+		if (str != nullptr && str[0] != '\0')
 		{
 			int length = std::strlen(str);
 			this->errorMessage = new char[length + 1];
