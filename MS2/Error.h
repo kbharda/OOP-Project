@@ -11,8 +11,8 @@
 // Name               Date                 Reason
 /////////////////////////////////////////////////////////////////
 
-#ifndef AMA_DATE_H
-#define AMA_DATE_H
+#ifndef AMA_ERROR_H
+#define AMA_ERROR_H
 
 namespace aid {
 
@@ -23,8 +23,6 @@ namespace aid {
 		char* errorMessage;
 
 	public:
-		//Public Member
-		Error();
 
 		explicit Error(const char* errorMessage = nullptr);
 
@@ -48,4 +46,4 @@ namespace aid {
 	std::ostream& operator<<(std::ostream& ostr, const Error& err);
 }
 
-#endif // ! AMA_DATE_H
+#endif // ! AMA_ERROR_H

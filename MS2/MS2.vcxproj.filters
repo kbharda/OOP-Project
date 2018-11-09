@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ms2_tester_prof.cpp">
+    <ClCompile Include="ms2_tester.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Error.cpp">

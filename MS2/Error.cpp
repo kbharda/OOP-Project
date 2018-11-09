@@ -13,30 +13,27 @@
 
 #include <iostream>
 #include <cstring>
-#include "Date.h"
+#include "Error.h"
 
 using namespace std;
 
 namespace aid {
 
-	//Default Constructor
-	Error::Error() {
-		this->errorMessage = '\0';
-	}
 	//One Argument Constructor
 	Error::Error(const char * errorMessage)
 	{
-		if (errorMessage == nullptr || errorMessage == " ")
+		if (errorMessage == nullptr || errorMessage == "")
 		{
 			this->errorMessage = '\0';
 		}
-		else if (errorMessage != " ")
+		else
 		{
-			Error::message(errorMessage);
-		}
 
-		//	errorMessage = nullptr;
-		//	Error::message(errorMessage);
+			int length = std::strlen(errorMessage);
+			this->errorMessage = new char[length + 1];
+			strncpy(this->errorMessage, errorMessage, length);
+			this->errorMessage[length] = '\0';
+		}
 	}
 
 	//Destructor
@@ -50,7 +47,6 @@ namespace aid {
 	{
 		delete[] errorMessage;
 		this->errorMessage = '\0';
-		errorMessage = nullptr;
 	}
 
 	//This Function returns true if the current object is in safe empty state;
@@ -66,17 +62,16 @@ namespace aid {
 	// This Function stores a copy of the CStyled String Pointed to by str;
 	void Error::message(const char* str)
 	{
-		int length = strlen(str);
-
-		delete[] errorMessage;
-
-		if (str != nullptr)
+		delete[] this->errorMessage;
+		if (str != nullptr && str != "")
 		{
-			errorMessage = new char[length + 1];
-			strncpy(errorMessage, str, length);
+			int length = std::strlen(str);
+			this->errorMessage = new char[length + 1];
+			strncpy(this->errorMessage, str, length);
+			this->errorMessage[length] = '\0';
 
 		}
-		else if (str == " ")
+		else
 		{
 			this->errorMessage = '\0';
 		}
@@ -86,7 +81,7 @@ namespace aid {
 	{
 		if (this->errorMessage != '\0')
 		{
-			return errorMessage;
+			return this->errorMessage;
 		}
 		else
 		{
