@@ -78,14 +78,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Error.cpp" />
-    <ClCompile Include="ms3_tester_prof.cpp" />
-    <ClCompile Include="MyGood.cpp" />
     <ClCompile Include="Good.cpp" />
+    <ClCompile Include="ms3_tester.cpp" />
+    <ClCompile Include="MyGood.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Error.h" />
-    <ClInclude Include="MyGood.h" />
     <ClInclude Include="Good.h" />
+    <ClInclude Include="MyGood.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

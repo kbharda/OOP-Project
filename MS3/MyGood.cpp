@@ -35,11 +35,11 @@ namespace aid {
 	const char* MyGood::name() const { return Good::name(); }
 	const char* MyGood::unit() const { return Good::unit(); }
 	bool MyGood::taxed() const { return Good::taxed(); }
-	double MyGood::price() const { return Good::price(); }
-	double MyGood::cost() const { return Good::cost(); }
+	double MyGood::price() const { return Good::itemPrice(); }
+	double MyGood::cost() const { return Good::itemCost(); }
 
 	Test::Test(const char* file) : filename(file) { }
-	Test::Test(const char* file, const char* theSku, const char* theName) : 
+	Test::Test(const char* file, const char* theSku, const char* theName) :
 		product(theSku, theName, ""), filename(file) { }
 	std::fstream& Test::store(std::fstream& file, bool addNewLine) const {
 		if (!product.isEmpty()) {

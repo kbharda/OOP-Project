@@ -16,8 +16,8 @@
 // Chris              2018-10-18           for Fall 2018
 /////////////////////////////////////////////////////////////////
 
-#ifndef AMA_MY_PRODUCT_H
-#define AMA_MY_PRODUCT_H
+#ifndef AMA_MYGOOD_H
+#define AMA_MYGOOD_H
 #include <fstream>
 #include "Good.h"
 
@@ -52,4 +52,4 @@ namespace aid {
 		friend std::istream& operator>>(std::istream& is, Test& test);
 	};
 }
-#endif
+#endif // !AID_MYGOOD_H
