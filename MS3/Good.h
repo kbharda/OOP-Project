@@ -34,6 +34,7 @@ namespace aid {
 		double m_priceTaxesPre;
 		bool m_taxable;
 		Error m_errorState;
+
 	protected:
 
 		//protected Member Functions
