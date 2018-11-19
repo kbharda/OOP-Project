@@ -19,7 +19,7 @@ namespace aid {
 	const int max_sku_length = 7;
 	const int max_unit_length = 10;
 	const int max_name_length = 75;
-	const double TAX_RATE = 0.13;
+	const double tax_rate = 0.13;
 
 	class Good {
 

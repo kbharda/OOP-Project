@@ -1,6 +1,6 @@
 // Final Project - Milestone 3 - MyGood and Test Modules
-// Version 3.4
-// Date	2018-03-03
+// Version 3.4.1
+// Date	2018-11-15
 // MyGood.cpp
 // Author	Fardad Soleimanloo, Chris Szalwinski
 //
@@ -14,8 +14,9 @@
 // Chris              2018-03-02           Final Draft 20181
 // Chris              2018-03-03           ErrorMessage -> Error
 // Chris              2018-10-18           for Fall 2018
+// Chris              2018-11-15           price and cost ids changed
 /////////////////////////////////////////////////////////////////
-
+#include <iostream>
 #include <iomanip>
 #include <fstream>
 #include <cstring>

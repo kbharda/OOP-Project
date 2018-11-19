@@ -16,7 +16,10 @@
 // Chris              2018-03-10           match prompts to specs
 // Chris              2018-10-18           for Fall 2018
 /////////////////////////////////////////////////////////////////
-
+#include <iostream>
+#include <iomanip>
+#include <fstream>
+#include <cstring>
 #include "MyGood.h"
 #define filename "ms3.txt"
 using namespace std;
