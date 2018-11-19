@@ -40,14 +40,7 @@ namespace aid {
 	}
 	const char* Good::name() const
 	{
-		if (this->m_name == "")
-		{
-			return nullptr;
-		}
-		else
-		{
-			return this->m_name;
-		}
+		return this->m_name;
 	}
 	const char* Good::sku() const
 	{
@@ -77,20 +70,20 @@ namespace aid {
 		}
 
 	}
-	void Good::message(const char *errorMessage)
+	void Good::message(const char* errorMessage)
 	{
 		this->m_errorState.message(errorMessage);
 	}
 
 	bool Good::isClear() const
 	{
-		if (m_errorState.message() == NULL);
+		if (m_errorState.isClear() == NULL);
 		{
 			return true;
 		}
 		return false;
 	}
-
+	// One argument Constructor
 	Good::Good(char type)
 	{
 		this->m_goodType = type;
@@ -102,6 +95,7 @@ namespace aid {
 		this->m_priceTaxesPre = 0.0;
 		this->m_taxable = false;
 	}
+	// Seven Argument Constructor
 	Good::Good(const char * sku, const char * nameGood, const char * unit, int quantityOnHand, bool taxable, double priceTaxesPre, int quantityNeeded)
 	{
 		strcpy(m_sku, sku);
@@ -112,7 +106,7 @@ namespace aid {
 		m_priceTaxesPre = priceTaxesPre;
 		m_quantityNeeded = quantityNeeded;
 	}
-
+	// Copy Constructor
 	Good::Good(const Good& good)
 	{
 		if (good.m_name != '\0')
@@ -129,8 +123,8 @@ namespace aid {
 		this->m_priceTaxesPre = good.m_priceTaxesPre;
 		this->m_taxable = good.m_taxable;
 	}
-
-	Good & Good::operator=(const Good& good)
+	// Copy Assignment Operator.
+	Good& Good::operator=(const Good& good)
 	{
 		// TODO: insert return statement here
 		if (this != &good)// Self Assignment Check
@@ -149,7 +143,7 @@ namespace aid {
 
 		return *this;
 	}
-
+	// Destructor deallocates memory
 	Good::~Good()
 	{
 		delete[] m_name;
@@ -182,16 +176,25 @@ namespace aid {
 
 		if (file.is_open())
 		{
-			file >> temp.m_goodType >> temp.m_sku >> temp.m_unit >> temp.m_name >> temp.m_quantityOnHand >> temp.m_quantityNeeded >> temp.m_priceTaxesPre >> temp.m_taxable;
+			file >> temp.m_goodType
+				>> temp.m_sku
+				>> temp.m_unit
+				>> temp.m_name
+				>> temp.m_quantityOnHand
+				>> temp.m_quantityNeeded
+				>> temp.m_priceTaxesPre
+				>> temp.m_taxable;
+
 			*this = temp;
 		}
+
 		delete[] temp.m_name;
 		temp.m_name = nullptr;
 
 		return file;
 	}
 
-	std::ostream & Good::write(std::ostream & os, bool linear) const
+	std::ostream& Good::write(std::ostream& os, bool linear) const
 	{
 		// TODO: insert return statement here
 
@@ -345,42 +348,63 @@ namespace aid {
 
 	int Good::qtyNeeded() const
 	{
-		return m_quantityNeeded;
+		return this->m_quantityNeeded;
 	}
 
 	int Good::quantity() const
 	{
-		return m_quantityOnHand;
+		return this->m_quantityOnHand;
 	}
 
-	bool Good::operator>(const char*) const
+	bool Good::operator>(const char* sku) const
 	{
+		if (strcmp(m_sku, sku) > 0);
+		{
+			return true;
+		}
 		return false;
 	}
 
-	bool Good::operator>(const Good&) const
+	bool Good::operator>(const Good& good) const
 	{
+		if (strcmp(m_name, good.m_name) > 0);
+		{
+			return true;
+		}
 		return false;
 	}
 
-	int Good::operator+=(int)
+	int Good::operator+=(int quantityAdded)
 	{
-		return 0;
+		if (quantityAdded > 0)
+		{
+			m_quantityOnHand += quantityAdded;
+			return m_quantityOnHand;
+		}
+		else
+		{
+			return m_quantityOnHand;
+		}
+
 	}
 
-	std::ostream & operator<<(std::ostream &, const Good &)
+	std::ostream& operator<<(std::ostream& ostr, const Good& good)
 	{
 		// TODO: insert return statement here
+		good.write(ostr, true);
+		return ostr;
 	}
 
-	std::istream & operator>>(std::istream &, Good &)
+	std::istream& operator>>(std::istream& istr, Good& good)
 	{
 		// TODO: insert return statement here
+		good.read(istr);
+		return istr;
 	}
 
-	double operator+=(double &, const Good &)
+	double operator+=(double& totalCost, const Good& good)
 	{
-		return 0.0;
+		totalCost += good.total_cost();
+		return totalCost;
 	}
-
 }
