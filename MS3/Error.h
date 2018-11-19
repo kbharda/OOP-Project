@@ -1,4 +1,5 @@
 #pragma once
+#define _CRT_SECURE_NO_WARNINGS
 // Final Project Milestone 2
 //
 // Version 1.0

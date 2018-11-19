@@ -22,6 +22,8 @@
 #include <cstring>
 #include "MyGood.h"
 #define filename "ms3.txt"
+#define _CRT_SECURE_NO_WARNINGS
+
 using namespace std;
 using namespace aid;
 

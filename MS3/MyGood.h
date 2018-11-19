@@ -1,3 +1,5 @@
+#pragma once
+#define _CRT_SECURE_NO_WARNINGS
 // Final Project - Milestone 3 - MyGood and Test Modules
 // Version 3.4.1
 // Date	2018-11-15
