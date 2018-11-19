@@ -4,7 +4,7 @@
 //
 // Version 1.0
 // Date 11/21/2018
-// Author Kashyap Bharda
+// Author Kashyap Bharda 
 // Description A class that manages a non-perishable good object.
 //
 // Revision History
@@ -14,6 +14,9 @@
 
 #ifndef AMA_GOOD_H
 #define AMA_GOOD_H
+
+#include <fstream>
+#include "Error.h"
 
 namespace aid {
 

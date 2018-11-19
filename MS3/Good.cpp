@@ -1,3 +1,4 @@
+
 // Final Project Milestone 2
 //
 // Version 1.0
@@ -9,6 +10,8 @@
 // -----------------------------------------------------------
 // Name               Date                 Reason
 /////////////////////////////////////////////////////////////////
+
+#define _CRT_SECURE_NO_WARNINGS
 
 #include <iostream>
 #include <fstream>
@@ -58,13 +61,13 @@ namespace aid {
 	}
 	double Good::itemCost() const
 	{
-		if (this->m_taxable)
+		if (m_taxable)
 		{
-			return this->m_priceTaxesPre + (m_priceTaxesPre*tax_rate);
+			return m_priceTaxesPre + (m_priceTaxesPre*tax_rate);
 		}
 		else
 		{
-			this->m_priceTaxesPre;
+			return m_priceTaxesPre;
 		}
 
 	}
@@ -75,7 +78,7 @@ namespace aid {
 
 	bool Good::isClear() const
 	{
-		if (m_errorState.isClear() == NULL);
+		if (m_errorState.isClear() == NULL)
 		{
 			return true;
 		}
@@ -303,7 +306,7 @@ namespace aid {
 
 	bool Good::operator==(const char* sku) const
 	{
-		if (strcmp(sku, m_sku) == 0);
+		if (strcmp(sku, m_sku) == 0)
 		{
 			return true;
 		}
@@ -337,7 +340,7 @@ namespace aid {
 
 	bool Good::isEmpty() const
 	{
-		if (m_name[0] == '\0');
+		if (m_name[0] == '\0')
 		{
 			return true;
 		}
@@ -356,7 +359,7 @@ namespace aid {
 
 	bool Good::operator>(const char* sku) const
 	{
-		if (strcmp(m_sku, sku) > 0);
+		if (strcmp(m_sku, sku) > 0)
 		{
 			return true;
 		}
@@ -365,7 +368,7 @@ namespace aid {
 
 	bool Good::operator>(const Good& good) const
 	{
-		if (strcmp(m_name, good.m_name) > 0);
+		if (strcmp(m_name, good.m_name) > 0)
 		{
 			return true;
 		}
