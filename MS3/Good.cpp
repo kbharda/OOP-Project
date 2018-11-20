@@ -273,7 +273,7 @@ namespace aid {
 				break;
 			}
 
-			cout << " Quatinty on hand: ";
+			cout << " Quantinty on hand: ";
 			is >> f_quantityOnHand;
 			if (is.fail())
 			{
@@ -281,7 +281,7 @@ namespace aid {
 				break;
 			}
 
-			cout << "Quatinty needed: ";
+			cout << "Quantinty needed: ";
 			is >> f_quantityNeeded;
 			if (is.fail())
 			{
