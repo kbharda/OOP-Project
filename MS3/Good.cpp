@@ -281,7 +281,7 @@ namespace aid {
 				break;
 			}
 
-			cout << "Quantity needed: ";
+			cout << " Quantity needed: ";
 			is >> f_quantityNeeded;
 			if (is.fail())
 			{
