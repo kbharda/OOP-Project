@@ -290,7 +290,7 @@ namespace aid {
 			}
 			if (!is.fail())
 			{
-				Good t = Good(f_sku, f_name, f_unit, f_quantityNeeded, f_quantityOnHand, f_taxable, f_priceTaxesPre);
+				Good t = Good(f_sku, f_name, f_unit, f_quantityOnHand, f_taxable, f_priceTaxesPre, f_quantityNeeded);
 				*this = t;
 				break;
 			}
