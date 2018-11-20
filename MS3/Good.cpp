@@ -78,7 +78,7 @@ namespace aid {
 
 	bool Good::isClear() const
 	{
-		if (m_error.isClear() == NULL)
+		if (m_error.message() == NULL)
 		{
 			return true;
 		}
