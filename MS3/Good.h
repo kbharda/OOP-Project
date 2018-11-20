@@ -14,7 +14,7 @@
 
 #ifndef AMA_GOOD_H
 #define AMA_GOOD_H
-
+#include <iostream>
 #include <fstream>
 #include "Error.h"
 
