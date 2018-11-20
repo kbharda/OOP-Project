@@ -37,7 +37,7 @@ namespace aid {
 		int m_quantityNeeded;
 		double m_priceTaxesPre;
 		bool m_taxable;
-		Error m_errorState;
+		Error m_error;
 
 	protected:
 

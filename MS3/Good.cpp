@@ -73,12 +73,12 @@ namespace aid {
 	}
 	void Good::message(const char* errorMessage)
 	{
-		this->m_errorState.message(errorMessage);
+		this->m_error.message(errorMessage);
 	}
 
 	bool Good::isClear() const
 	{
-		if (m_errorState.isClear() == NULL)
+		if (m_error.isClear() == NULL)
 		{
 			return true;
 		}
@@ -235,10 +235,10 @@ namespace aid {
 		char f_unit[max_unit_length + 1];
 		int f_quantityOnHand;
 		int f_quantityNeeded;
-		int f_priceTaxesPre;
+		double f_priceTaxesPre;
 		char f_taxed;
 		bool f_taxable;
-		Error f_errorState;
+		Error f_error;
 
 		cout << " Sku: ";
 		is >> f_sku;
@@ -260,45 +260,42 @@ namespace aid {
 		else
 		{
 			is.setstate(std::ios::failbit); //Input- Output stream error State flag set for operation faileed.
-			f_errorState.message("Only (Y)es or (N)o are acceptable");
+			f_error.message("Only (Y)es or (N)o are acceptable");
 		}
 
-		if (!is.fail())
+		while (!is.fail())
 		{
 			cout << " Price: ";
 			is >> f_priceTaxesPre;
 			if (is.fail())
 			{
-				f_errorState.message("Invalid Price Entry");
+				f_error.message("Invalid Price Entry");
+				break;
 			}
-		}
 
-		if (!is.fail())
-		{
 			cout << " Quatinty on hand: ";
 			is >> f_quantityOnHand;
 			if (is.fail())
 			{
-				f_errorState.message("Invalid Quantity Entry");
+				f_error.message("Invalid Quantity Entry");
+				break;
 			}
-		}
 
-		if (!is.fail())
-		{
 			cout << "Quatinty needed: ";
 			is >> f_quantityNeeded;
 			if (is.fail())
 			{
-				f_errorState.message("Invalid Quantity Needed Entry");
+				f_error.message("Invalid Quantity Needed Entry");
+				break;
 			}
-		}
+			if (!is.fail())
+			{
+				Good t = Good(f_sku, f_name, f_unit, f_quantityNeeded, f_quantityOnHand, f_taxable, f_priceTaxesPre);
+				*this = t;
+				break;
+			}
 
-		if (!is.fail())
-		{
-			Good t = Good(f_sku, f_name, f_unit, f_quantityNeeded, f_quantityOnHand, f_taxable, f_priceTaxesPre);
-			*this = t;
 		}
-
 		delete[] f_name;
 		f_name = nullptr;
 		return is;
