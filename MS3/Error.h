@@ -12,8 +12,8 @@
 // Name               Date                 Reason
 /////////////////////////////////////////////////////////////////
 
-#ifndef AMA_ERROR_H
-#define AMA_ERROR_H
+#ifndef AID_ERROR_H
+#define AID_ERROR_H
 
 namespace aid {
 
@@ -47,4 +47,4 @@ namespace aid {
 	std::ostream& operator<<(std::ostream& ostr, const Error& err);
 }
 
-#endif // ! AMA_ERROR_H
+#endif // ! AID_ERROR_H

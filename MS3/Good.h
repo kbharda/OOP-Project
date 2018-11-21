@@ -12,8 +12,8 @@
 // Name               Date                 Reason
 /////////////////////////////////////////////////////////////////
 
-#ifndef AMA_GOOD_H
-#define AMA_GOOD_H
+#ifndef AID_GOOD_H
+#define AID_GOOD_H
 #include <iostream>
 #include <fstream>
 #include "Error.h"
