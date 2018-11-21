@@ -43,7 +43,7 @@ namespace aid {
 
 	};
 
-	//Helper
+	//Helper Function
 	std::ostream& operator<<(std::ostream& ostr, const Error& err);
 }
 
