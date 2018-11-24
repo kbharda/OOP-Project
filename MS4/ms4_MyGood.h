@@ -24,7 +24,7 @@
 #include "iGood.h"
 #include "iGood.h"
 #include "iGood.h" // Good.h is included three times on purpose.
-#include "iProduct.h"
+
 
 namespace aid {
 	class MyGood : public iGood {
