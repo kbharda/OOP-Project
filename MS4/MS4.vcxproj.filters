@@ -29,5 +29,8 @@
     <ClInclude Include="ms4_MyGood.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="iGood.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -16,6 +16,7 @@
     <ClCompile Include="ms4_tester.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="iGood.h" />
     <ClInclude Include="ms4_MyGood.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
