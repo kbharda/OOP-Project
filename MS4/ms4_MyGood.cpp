@@ -14,7 +14,7 @@
 // Name               Date                 Reason
 // Chris              2018-10-18           fall 2018
 /////////////////////////////////////////////////////////////////
-
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <fstream>
 #include <cstring>
