@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+
 
 // Final Project Milestone 4 - iGood Interface
 // Version 3.4
