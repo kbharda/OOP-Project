@@ -19,13 +19,13 @@
 // Chris              2018-10-18           fall 2018
 /////////////////////////////////////////////////////////////////
 #define _CRT_SECURE_NO_WARNINGS
-#ifndef AMA_MYGOOD_H
-#define AMA_MYGOOD_H
+#ifndef AID_MYGOOD_H
+#define AID_MYGOOD_H
 #include "iGood.h"
 #include "iGood.h"
 #include "iGood.h" // Good.h is included three times on purpose.
 
-namespace ama {
+namespace aid {
 	class MyGood : public iGood {
 		char text_[10000];
 		char sku[4];
@@ -47,4 +47,4 @@ namespace ama {
 		bool operator>(const iGood&) const;
 	};
 }
-#endif // !AMA_MYGOOD_H
+#endif // !AID_MYGOOD_H

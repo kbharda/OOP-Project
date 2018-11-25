@@ -11,13 +11,13 @@
 // Name               Date                 Reason
 /////////////////////////////////////////////////////////////////
 #define _CRT_SECURE_NO_WARNINGS
-#ifndef AMA_IGOOD_H
-#define AMA_IGOOD_H
+#ifndef AID_IGOOD_H
+#define AID_IGOOD_H
 
 #include <fstream>
 #include <iostream>
 
-namespace ama {
+namespace aid {
 
 	class iGood {
 
@@ -50,4 +50,4 @@ namespace ama {
 	iGood* CreatePerishable();
 }
 
-#endif // !AMA_IGOOD_H
+#endif // !AID_IGOOD_H

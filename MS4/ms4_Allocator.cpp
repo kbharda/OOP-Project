@@ -16,7 +16,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "ms4_MyGood.h"
 
-namespace ama {
+namespace aid {
 
 	iGood* CreateGood() {
 		return new MyGood("Good");

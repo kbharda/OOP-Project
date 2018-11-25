@@ -15,11 +15,10 @@
 // Chris              2018-02-07           I/O Alignment
 // Chris              2018-10-18           fall 2018
 /////////////////////////////////////////////////////////////////
-#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include "iGood.h"
 using namespace std;
-using namespace ama;
+using namespace aid;
 #define FILE "ms4.txt" // file of records
 #if defined(_MSC_VER)
 #define END_OF_FILE "Ctrl^Z"

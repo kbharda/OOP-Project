@@ -21,7 +21,7 @@
 #include "ms4_MyGood.h"
 using namespace std;
 
-namespace ama {
+namespace aid {
 
 	// constructor
 	//
