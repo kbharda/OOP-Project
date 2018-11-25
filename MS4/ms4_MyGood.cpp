@@ -141,5 +141,6 @@ namespace ama {
   //
   bool MyGood::operator>(const iGood& p) const {
 	  return !strcmp(name_, p.name()); 
+
   }
 }
