@@ -18,7 +18,7 @@
 #include <iostream>
 #include "iGood.h"
 using namespace std;
-using namespace aid;
+using namespace ama;
 #define FILE "ms4.txt" // file of records
 #if defined(_MSC_VER)
 #define END_OF_FILE "Ctrl^Z"

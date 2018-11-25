@@ -1,4 +1,15 @@
 #pragma once
+// Final Project Milestone 4
+//
+// Version 1.0
+// Date 11/24/2018
+// Author Kashyap Bharda
+// Description iGood Module
+//
+// Revision History
+// -----------------------------------------------------------
+// Name               Date                 Reason
+/////////////////////////////////////////////////////////////////
 
 #ifndef AMA_IGOOD_H
 #define AMA_IGOOD_H
@@ -9,8 +20,8 @@
 namespace ama {
 
 	class iGood {
+		
 		// PUBLIC MEMBERS
-
 	public:
 
 		virtual std::fstream& store(std::fstream& file, bool newLine = true) const = 0;
