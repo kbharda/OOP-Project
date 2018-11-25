@@ -10,17 +10,17 @@
 // -----------------------------------------------------------
 // Name               Date                 Reason
 /////////////////////////////////////////////////////////////////
-
+#define _CRT_SECURE_NO_WARNINGS
 #ifndef AMA_IGOOD_H
 #define AMA_IGOOD_H
 
 #include <fstream>
 #include <iostream>
 
-namespace AMA {
+namespace ama {
 
 	class iGood {
-		
+
 		// PUBLIC MEMBERS
 	public:
 

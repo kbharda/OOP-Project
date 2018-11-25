@@ -18,15 +18,14 @@
 // Chris              2018-03-10           Matching specs
 // Chris              2018-10-18           fall 2018
 /////////////////////////////////////////////////////////////////
-
+#define _CRT_SECURE_NO_WARNINGS
 #ifndef AMA_MYGOOD_H
 #define AMA_MYGOOD_H
 #include "iGood.h"
 #include "iGood.h"
 #include "iGood.h" // Good.h is included three times on purpose.
 
-
-namespace AMA {
+namespace ama {
 	class MyGood : public iGood {
 		char text_[10000];
 		char sku[4];
