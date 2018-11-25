@@ -21,7 +21,7 @@
 #include "ms4_MyGood.h"
 using namespace std;
 
-namespace ama {
+namespace AMA {
 
   // constructor
   //
@@ -143,6 +143,5 @@ namespace ama {
   //
   bool MyGood::operator>(const iGood& p) const {
 	  return !strcmp(name_, p.name()); 
-
   }
 }

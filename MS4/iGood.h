@@ -14,10 +14,10 @@
 #ifndef AMA_IGOOD_H
 #define AMA_IGOOD_H
 
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
-namespace ama {
+namespace AMA {
 
 	class iGood {
 		

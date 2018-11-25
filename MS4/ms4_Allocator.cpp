@@ -13,9 +13,8 @@
 // Chris              2018-10-18           fall 2018
 /////////////////////////////////////////////////////////////////
 #include "ms4_MyGood.h"
-#include "iGood.h"
 
-namespace ama {
+namespace AMA {
 
 	iGood* CreateGood() {
 		return new MyGood("Good");

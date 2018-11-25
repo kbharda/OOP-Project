@@ -26,7 +26,7 @@
 #include "iGood.h" // Good.h is included three times on purpose.
 
 
-namespace ama {
+namespace AMA {
 	class MyGood : public iGood {
 		char text_[10000];
 		char sku[4];
