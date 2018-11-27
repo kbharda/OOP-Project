@@ -17,5 +17,16 @@
     <ClCompile Include="ms5_Allocator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Good.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Good.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="iGood.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

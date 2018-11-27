@@ -11,8 +11,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Good.cpp" />
     <ClCompile Include="ms5_Allocator.cpp" />
     <ClCompile Include="ms5_tester.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Good.h" />
+    <ClInclude Include="iGood.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E3AE35E5-EF31-4984-8FA2-6DB4AEA15648}</ProjectGuid>
