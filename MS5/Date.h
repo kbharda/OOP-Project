@@ -67,8 +67,9 @@ namespace aid {
 		std::ostream& write(std::ostream& ostr) const;
 	};
 
-	std::istream& operator>>(std::istream& istr, Date& rhs);
-	std::ostream& operator<<(std::ostream& ostr, Date& rhs);
+	std::ostream& operator<<(std::ostream& ostr, const Date& writeDate);
+	std::istream& operator>>(std::istream& istr, Date& readDate);
+	
 
 }
 #endif//AMA_DATE_H

@@ -20,12 +20,30 @@
     <ClCompile Include="Good.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Perishable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Date.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Error.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Good.h">
       <Filter>Resource Files</Filter>
     </ClInclude>
     <ClInclude Include="iGood.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Perishable.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Date.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Error.h">
       <Filter>Resource Files</Filter>
     </ClInclude>
   </ItemGroup>

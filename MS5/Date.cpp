@@ -219,19 +219,19 @@ namespace aid {
 		return ostr;
 	}
 
-	std::istream& operator>>(std::istream & istr, Date & rhs)
-	{
-		rhs.read(istr);
-		return istr;
-	}
 
-	std::ostream & operator<<(std::ostream & ostr, Date & rhs)
+
+	std::ostream & operator<<(std::ostream& ostr, const Date& writeDate)
 	{
 
-		rhs.write(ostr);
+		writeDate.write(ostr);
 		return ostr;
 	}
 
-
+	std::istream& operator>>(std::istream& istr, Date& readDate)
+	{
+		readDate.read(istr);
+		return istr;
+	}
 }
 
