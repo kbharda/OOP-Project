@@ -55,6 +55,5 @@ namespace aid {
 	{
 		os.fill(' '); // Require ffor fill the white space
 		Good::write(os, linear);
-
 	}
 }
