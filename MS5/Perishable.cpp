@@ -57,7 +57,7 @@ namespace aid {
 	// else it inserts the expiry date into the ostream object if linear is true adds the expiry date.
 	std::ostream& Perishable::write(std::ostream& os, bool linear) const
 	{
-		os.fill(' '); // Require ffor fill the white spaces
+	//	os.fill(' '); // Require ffor fill the white spaces
 		Good::write(os, linear);
 
 		if (isClear() && !isEmpty()) {
