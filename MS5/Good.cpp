@@ -243,7 +243,6 @@ namespace aid {
 		double f_priceTaxesPre;
 		char f_taxed;
 		bool f_taxable;
-		Error f_error;
 
 		cout << " Sku: ";
 		is >> f_sku;
@@ -265,7 +264,7 @@ namespace aid {
 		else
 		{
 			is.setstate(std::ios::failbit); //Input- Output stream error State flag set for operation faileed.
-			f_error.message("Only (Y)es or (N)o are acceptable");
+			m_error.message("Only (Y)es or (N)o are acceptable");
 		}
 
 		while (!is.fail())
@@ -274,7 +273,7 @@ namespace aid {
 			is >> f_priceTaxesPre;
 			if (is.fail())
 			{
-				f_error.message("Invalid Price Entry");
+				m_error.message("Invalid Price Entry");
 				break;
 			}
 
@@ -282,7 +281,7 @@ namespace aid {
 			is >> f_quantityOnHand;
 			if (is.fail())
 			{
-				f_error.message("Invalid Quantity Entry");
+				m_error.message("Invalid Quantity Entry");
 				break;
 			}
 
@@ -290,11 +289,12 @@ namespace aid {
 			is >> f_quantityNeeded;
 			if (is.fail())
 			{
-				f_error.message("Invalid Quantity Needed Entry");
+				m_error.message("Invalid Quantity Needed Entry");
 				break;
 			}
 			if (!is.fail())
 			{
+				m_error.clear();
 				Good t = Good(f_sku, f_name, f_unit, f_quantityOnHand, f_taxable, f_priceTaxesPre, f_quantityNeeded);
 				*this = t;
 				break;
@@ -303,6 +303,7 @@ namespace aid {
 		}
 		delete[] f_name;
 		f_name = nullptr;
+
 		return is;
 	}
 
