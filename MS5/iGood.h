@@ -14,11 +14,8 @@
 #ifndef AID_IGOOD_H
 #define AID_IGOOD_H
 
-
 #include <iostream>
 #include <fstream>
-#include <istream>
-#include <ostream>
 
 namespace aid {
 

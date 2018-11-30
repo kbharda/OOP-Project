@@ -10,10 +10,10 @@
 // Name               Date                 Reason
 /////////////////////////////////////////////////////////////////
 
+#define _CRT_SECURE_NO_WARNINGS
 
 #ifndef AMA_DATE_H
 #define AMA_DATE_H
-#define _CRT_SECURE_NO_WARNINGS
 
 #define NO_ERROR   0  
 #define CIN_FAILED 1  
