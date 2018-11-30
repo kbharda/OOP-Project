@@ -198,6 +198,11 @@ namespace aid {
 	std::ostream& Good::write(std::ostream& os, bool linear) const
 	{
 		// TODO: insert return statement here
+		if (!m_error.isClear())
+		{
+			os << m_error;
+			return os;
+		}
 
 		if (linear)
 		{
