@@ -28,7 +28,7 @@ namespace aid {
 	// To the base class constructor and seeers 
 	Perishable::Perishable() : Good('P')
 	{
-	
+		m_ExpiryDate;
 	}
 
 	// calls its base class version inserts a comma into the file record and appends the expiry date to the file record.
@@ -57,7 +57,7 @@ namespace aid {
 	// else it inserts the expiry date into the ostream object if linear is true adds the expiry date.
 	std::ostream& Perishable::write(std::ostream& os, bool linear) const
 	{
-	//	os.fill(' '); // Require ffor fill the white spaces
+		os.fill(' ');
 		Good::write(os, linear);
 
 		if (isClear() && !isEmpty()) {
