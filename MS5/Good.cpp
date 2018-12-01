@@ -253,9 +253,9 @@ namespace aid {
 			}
 			else
 			{
-				os << " Price after tax: " << endl;
+				os << " Price after tax: " << " N/A" << endl;
 			}
-			os << " Quantity on hand: " << m_quantityOnHand << " " << m_unit << endl
+			os << " Quantity on Hand: " << m_quantityOnHand << " " << m_unit << endl
 				<< " Quantity needed: " << m_quantityNeeded << endl;
 		}
 		return os;
