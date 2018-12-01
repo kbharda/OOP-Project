@@ -1,5 +1,5 @@
 #pragma once
-#define _CRT_SECURE_NO_WARNINGS
+
 // Final Project Milestone 2
 //
 // Version 1.0
@@ -11,6 +11,8 @@
 // -----------------------------------------------------------
 // Name               Date                 Reason
 /////////////////////////////////////////////////////////////////
+
+#define _CRT_SECURE_NO_WARNINGS
 
 #ifndef AID_GOOD_H
 #define AID_GOOD_H
@@ -39,11 +41,12 @@ namespace aid {
 		int m_quantityNeeded;
 		double m_priceTaxesPre;
 		bool m_taxable;
-		Error m_error;
+		
 
 	protected:
-
-		//protected Member Functions
+	//protected Member Functions
+		Error m_error;
+		
 		void name(const char*);
 		const char* name() const;
 		const char* sku() const;

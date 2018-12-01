@@ -28,7 +28,7 @@ namespace aid {
 	// To the base class constructor and seeers 
 	Perishable::Perishable() : Good('P')
 	{
-
+	
 	}
 
 	// calls its base class version inserts a comma into the file record and appends the expiry date to the file record.
@@ -87,7 +87,7 @@ namespace aid {
 
 		if (is.good())
 		{
-			std::cout << " Expiry daye (YYYY/MM/DD): ";
+			std::cout << " Expiry date (YYYY/MM/DD): ";
 			temp.read(is);
 
 			if (temp.bad() == true)

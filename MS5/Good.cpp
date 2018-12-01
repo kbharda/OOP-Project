@@ -120,9 +120,11 @@ namespace aid {
 		strncpy(m_name, good.m_name, max_name_length + 1);
 
 		this->m_quantityOnHand = good.m_quantityOnHand;
-		this->m_quantityNeeded = good.m_quantityNeeded;
-		this->m_priceTaxesPre = good.m_priceTaxesPre;
 		this->m_taxable = good.m_taxable;
+		this->m_priceTaxesPre = good.m_priceTaxesPre;
+		this->m_quantityNeeded = good.m_quantityNeeded;
+
+
 	}
 	// Copy Assignment Operator.
 	Good& Good::operator=(const Good& good)
@@ -134,9 +136,9 @@ namespace aid {
 			strcpy(m_unit, good.m_unit);
 
 			this->m_quantityOnHand = good.m_quantityOnHand;
-			this->m_quantityNeeded = good.m_quantityNeeded;
-			this->m_priceTaxesPre = good.m_priceTaxesPre;
 			this->m_taxable = good.m_taxable;
+			this->m_priceTaxesPre = good.m_priceTaxesPre;
+			this->m_quantityNeeded = good.m_quantityNeeded;
 
 			delete[] m_name;
 			name(good.m_name);
@@ -154,11 +156,13 @@ namespace aid {
 	{
 		// TODO: insert return statement here
 
-		file << m_goodType << ", "
-			<< m_name << ", "
-			<< m_taxable << ", "
-			<< m_priceTaxesPre << ", "
-			<< m_quantityOnHand << ", "
+		file << m_goodType << ","
+			<< m_sku << ","
+			<< m_name << ","
+			<< m_unit << ","
+			<< m_taxable << ","
+			<< m_priceTaxesPre << ","
+			<< m_quantityOnHand << ","
 			<< m_quantityNeeded;
 
 		if (newLine)
@@ -172,39 +176,64 @@ namespace aid {
 	{
 		// TODO: insert return statement here
 
-		Good temp;
-		temp.m_name = new char[max_name_length + 1];
+		char f_sku[max_sku_length + 1];
+		char* f_name = new char[max_name_length + 1];
+		char f_unit[max_unit_length + 1];
+		int f_qtyOnHand;
+		int f_qtyNeeded;
+		double f_pricePreTax;
+		char f_taxed;
+		bool f_taxable;
+		Good load;
 
 		if (file.is_open())
 		{
-			file >> temp.m_goodType
-				>> temp.m_sku
-				>> temp.m_unit
-				>> temp.m_name
-				>> temp.m_quantityOnHand
-				>> temp.m_quantityNeeded
-				>> temp.m_priceTaxesPre
-				>> temp.m_taxable;
+			file.get(f_sku, max_sku_length, ',');
+			file.ignore();
 
-			*this = temp;
+			file.get(f_name, max_name_length, ',');
+			file.ignore();
+
+			file.get(f_unit, max_unit_length, ',');
+			file.ignore();
+
+			file >> f_taxed;
+			file.ignore();
+
+			file >> f_pricePreTax;
+			file.ignore();
+
+			file >> f_qtyOnHand;
+			file.ignore();
+
+			file >> f_qtyNeeded;
+			file.ignore();
+
+			if (f_taxed == '0')
+			{
+				f_taxable = false;
+			}
+			else
+			{
+				f_taxable = true;
+			}
+
+			load = Good(f_sku, f_name, f_unit, f_qtyOnHand, f_taxable, f_pricePreTax, f_qtyNeeded);
+
+			*this = load;
 		}
-
-		delete[] temp.m_name;
-		temp.m_name = nullptr;
 
 		return file;
 	}
 
 	std::ostream& Good::write(std::ostream& os, bool linear) const
 	{
-		// TODO: insert return statement here
-		if (!m_error.isClear())
+		if (m_error.message() != nullptr)
 		{
 			os << m_error;
-			return os;
 		}
 
-		if (linear)
+		else if (linear)
 		{
 			os << setw(max_sku_length) << left << m_sku << "|"
 				<< setw(20) << left << m_name << "|"
@@ -215,19 +244,19 @@ namespace aid {
 		}
 		else
 		{
-			os << "Sku: " << m_sku << "|" << endl
-				<< "Name: " << m_name << "|" << endl
-				<< "Price: " << m_priceTaxesPre << "|" << endl;
+			os << " Sku: " << m_sku << endl
+				<< " Name (no spaces): " << m_name << endl
+				<< " Price: " << m_priceTaxesPre << endl;
 			if (m_taxable)
 			{
-				os << "Price after tax: " << itemCost() << "|" << endl;
+				os << " Price after tax: " << itemCost() << endl;
 			}
 			else
 			{
-				os << "N/A" << "|" << endl;
+				os << " Price after tax: " << endl;
 			}
-			os << "Quantity on hand: " << m_quantityOnHand << "|" << endl
-				<< "Quantity needed: " << m_quantityNeeded << "|" << endl;
+			os << " Quantity on hand: " << m_quantityOnHand << " " << m_unit << endl
+				<< " Quantity needed: " << m_quantityNeeded << endl;
 		}
 		return os;
 	}
@@ -238,11 +267,12 @@ namespace aid {
 		char f_sku[max_sku_length + 1];
 		char* f_name = new char[max_name_length + 1];
 		char f_unit[max_unit_length + 1];
-		int f_quantityOnHand;
-		int f_quantityNeeded;
+		int f_qtyOnHand;
+		int f_qtyNeeded;
 		double f_priceTaxesPre;
 		char f_taxed;
 		bool f_taxable;
+		bool valid = true;  //flag state
 
 		cout << " Sku: ";
 		is >> f_sku;
@@ -250,59 +280,97 @@ namespace aid {
 		is >> f_name;
 		cout << " Unit: ";
 		is >> f_unit;
-		cout << " Taxed? (y/n): ";
-		is >> f_taxed;
+		//	cout << " Taxed? (y/n): ";
+		//	is >> f_taxed;
 
-		if (f_taxed == 'y' || f_taxed == 'Y')
+		while (valid)
 		{
-			f_taxable = true;
-		}
-		else if (f_taxed == 'n' || f_taxed == 'N')
-		{
-			f_taxable = false;
-		}
-		else
-		{
-			is.setstate(std::ios::failbit); //Input- Output stream error State flag set for operation faileed.
-			m_error.message("Only (Y)es or (N)o are acceptable");
+			cout << " Taxed? (y/n): ";
+			is >> f_taxed;
+
+			if (f_taxed == 'y' || f_taxed == 'Y' || f_taxed == 'n' || f_taxed == 'N')
+			{
+				if (f_taxed == 'n' || f_taxed == 'N')
+				{
+					f_taxable = false;
+				}
+				else
+				{
+					f_taxable = true;
+				}
+				break;
+			}
+			else
+			{
+				valid = false;
+				is.setstate(std::ios::failbit);
+				message("Only (Y)es or (N)o are acceptable");
+				break;
+			}
 		}
 
-		while (!is.fail())
+		while (valid)
 		{
 			cout << " Price: ";
 			is >> f_priceTaxesPre;
+
 			if (is.fail())
 			{
-				m_error.message("Invalid Price Entry");
+				is.setstate(std::ios::failbit);
+				message("Invalid Price Entry");
+				valid = false;
 				break;
 			}
-
-			cout << " Quantity on hand: ";
-			is >> f_quantityOnHand;
-			if (is.fail())
+			else
 			{
-				m_error.message("Invalid Quantity Entry");
+				valid = true;
 				break;
 			}
-
-			cout << " Quantity needed: ";
-			is >> f_quantityNeeded;
-			if (is.fail())
-			{
-				m_error.message("Invalid Quantity Needed Entry");
-				break;
-			}
-			if (!is.fail())
-			{
-				m_error.clear();
-				Good t = Good(f_sku, f_name, f_unit, f_quantityOnHand, f_taxable, f_priceTaxesPre, f_quantityNeeded);
-				*this = t;
-				break;
-			}
-
 		}
-		delete[] f_name;
-		f_name = nullptr;
+
+		while (valid)
+		{
+			cout << " Quantity on hand: ";
+			is >> f_qtyOnHand;
+
+			if (is.fail())
+			{
+				is.setstate(std::ios::failbit);
+				message("Invalid Quantity Entry");
+				valid = false;
+				break;
+			}
+			else
+			{
+				valid = true;
+				break;
+			}
+		}
+
+		while (valid)
+		{
+			cout << " Quantity needed: ";
+			is >> f_qtyNeeded;
+			is.ignore(); // require for submitter
+			if (is.fail())
+			{
+				is.setstate(std::ios::failbit);
+				message("Invalid Quantity Needed Entry");
+				valid = false;
+				break;
+			}
+			else
+			{
+				valid = true;
+				break;
+			}
+		}
+
+		if (valid)
+		{
+			*this = Good(f_sku, f_name, f_unit, f_qtyOnHand, f_taxable, f_priceTaxesPre, f_qtyNeeded);
+			m_error.clear();
+		}
 
 		return is;
 	}
@@ -328,7 +396,6 @@ namespace aid {
 		{
 			totalCost = m_quantityOnHand * m_priceTaxesPre;
 		}
-
 		return totalCost;
 	}
 

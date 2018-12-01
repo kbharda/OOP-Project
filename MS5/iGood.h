@@ -10,6 +10,7 @@
 // -----------------------------------------------------------
 // Name               Date                 Reason
 /////////////////////////////////////////////////////////////////
+
 #define _CRT_SECURE_NO_WARNINGS
 #ifndef AID_IGOOD_H
 #define AID_IGOOD_H

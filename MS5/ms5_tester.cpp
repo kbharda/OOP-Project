@@ -106,7 +106,7 @@ void testGood() {
 			cout << " Quantity Needed validaton failed" << endl;
 		}
 	}
-	pause_();
+	pause_(); 
 	if (ok) {
 		cout << "----Display test, the output of the Program and yours must match:" << endl;
 		promptUser("1234", "box", "kg", 'y', "123.45", "1", "5");
