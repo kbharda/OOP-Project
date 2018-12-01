@@ -28,7 +28,7 @@ namespace aid {
 	// To the base class constructor and seeers 
 	Perishable::Perishable() : Good('P')
 	{
-		m_ExpiryDate;
+		//m_ExpiryDate;
 	}
 
 	// calls its base class version inserts a comma into the file record and appends the expiry date to the file record.
