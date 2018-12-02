@@ -35,6 +35,7 @@ namespace aid {
 		Good::store(file, false);
 		file << ',';
 		file << expiryDate;
+		;
 		file << endl;
 
 		return file;
