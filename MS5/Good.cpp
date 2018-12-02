@@ -29,6 +29,7 @@ namespace aid {
 
 		if (nameGood == nullptr)
 		{
+			delete[] m_name;
 			this->m_name = nullptr;
 		}
 		else
@@ -89,11 +90,7 @@ namespace aid {
 
 	bool Good::isClear() const
 	{
-		if (m_error.message() == NULL)
-		{
-			return true;
-		}
-		return false;
+		return this->m_error.isClear();
 	}
 	// One argument Constructor
 	Good::Good(char type)
@@ -111,10 +108,10 @@ namespace aid {
 	Good::Good(const char * sku, const char * nameGood, const char * unit, int quantityOnHand, bool taxable, double priceTaxesPre, int quantityNeeded)
 	{
 		bool notnull = sku != nullptr && nameGood != nullptr && unit != nullptr;
-		
+
 		if (notnull)
 		{
-			strncpy(m_sku, sku,strlen(sku));
+			strncpy(m_sku, sku, strlen(sku));
 			m_sku[strlen(sku)] = '\0';
 
 			Good::name(nameGood);
@@ -122,7 +119,6 @@ namespace aid {
 			strncpy(m_unit, unit, strlen(unit));
 			m_unit[strlen(unit)] = '\0';
 		}
-		
 
 		m_quantityOnHand = quantityOnHand;
 		m_taxable = taxable;
@@ -155,22 +151,22 @@ namespace aid {
 		// TODO: insert return statement here
 		if (this != &good)// Self Assignment Check
 		{
-			int sku_l = strlen(good.m_sku);
-			int unit_l = strlen(good.m_unit);
+			int skuu = strlen(good.m_sku);
+			int unitt = strlen(good.m_unit);
 
 			this->m_goodType = good.m_goodType;
 			this->m_quantityOnHand = good.m_quantityOnHand;
 			this->m_quantityNeeded = good.m_quantityNeeded;
 			this->m_priceTaxesPre = good.m_priceTaxesPre;
 			this->m_taxable = good.m_taxable;
-			
+
 			name(good.m_name);
 
-			strncpy(m_sku, good.m_sku, sku_l);
-			m_sku[sku_l] = '\0';
+			strncpy(m_sku, good.m_sku, skuu);
+			m_sku[skuu] = '\0';
 
-			strncpy(m_unit, good.m_unit, unit_l);
-			m_unit[unit_l] = '\0';
+			strncpy(m_unit, good.m_unit, unitt);
+			m_unit[unitt] = '\0';
 		}
 
 		return *this;
@@ -185,7 +181,7 @@ namespace aid {
 	{
 		// TODO: insert return statement here
 
-		file<< m_goodType << ","
+		file << m_goodType << ","
 			<< m_sku << ","
 			<< m_name << ","
 			<< m_unit << ","
@@ -236,7 +232,7 @@ namespace aid {
 			{
 				f_taxable = true;
 			}
-			
+
 			file.ignore();
 
 			file >> f_pricePreTax;
@@ -274,7 +270,7 @@ namespace aid {
 		}
 		else
 		{
-			os  << " Sku: " << m_sku << endl
+			os << " Sku: " << m_sku << endl
 				<< " Name (no spaces): " << m_name << endl
 				<< " Price: " << m_priceTaxesPre << endl;
 			if (m_taxable)
@@ -298,7 +294,7 @@ namespace aid {
 		int quantity;
 		int neededQty;
 		double price;
-	
+
 		if (!is.fail())
 		{
 			cout << " Sku: ";
@@ -314,65 +310,65 @@ namespace aid {
 
 			cout << " Taxed? (y/n): ";
 			is >> taxes;
-		}
-		
-		if ( !is.fail())
-		{
-			m_error.clear();
 
-			if (taxes)
+
+			if (!is.fail())
 			{
-				bool valid = taxes == 'y' || taxes == 'Y';
-				bool not_valid = taxes == 'n' || taxes == 'N';
+				m_error.clear();
 
-				if (valid)
+				if (taxes)
 				{
-					m_taxable = true;
-				}
-				if (not_valid)
-				{
-					m_taxable = false;
-				}
+					bool valid = taxes == 'y' || taxes == 'Y';
+					bool not_valid = taxes == 'n' || taxes == 'N';
 
-				if (!(valid || not_valid))
-				{
-					is.setstate(std::ios::failbit);
-					m_error.message("Only (Y)es or (N)o are acceptable");
-					return is;
+					if (valid)
+					{
+						m_taxable = true;
+					}
+					if (not_valid)
+					{
+						m_taxable = false;
+					}
+
+					if (!(valid || not_valid))
+					{
+						is.setstate(std::ios::failbit);
+						m_error.message("Only (Y)es or (N)o are acceptable");
+						return is;
+					}
 				}
 			}
-		}
-		else {
-			is.setstate(std::ios::failbit);
-			m_error.message("Only (Y)es or (N)o are acceptable");
-			return is;
-		}
-		
-		/*while (valid)
-		{
-			cout << " Taxed? (y/n): ";
-			is >> f_taxed;
+			else {
+				is.setstate(std::ios::failbit);
+				m_error.message("Only (Y)es or (N)o are acceptable");
+				return is;
+			}
 
-			if (f_taxed == 'y' || f_taxed == 'Y' || f_taxed == 'n' || f_taxed == 'N')
+			/*while (valid)
 			{
-				if (f_taxed == 'n' || f_taxed == 'N')
+				cout << " Taxed? (y/n): ";
+				is >> f_taxed;
+
+				if (f_taxed == 'y' || f_taxed == 'Y' || f_taxed == 'n' || f_taxed == 'N')
 				{
-					f_taxable = false;
+					if (f_taxed == 'n' || f_taxed == 'N')
+					{
+						f_taxable = false;
+					}
+					else
+					{
+						f_taxable = true;
+					}
+					break;
 				}
 				else
 				{
-					f_taxable = true;
+					valid = false;
+					is.setstate(std::ios::failbit);
+					message("Only (Y)es or (N)o are acceptable");
+					break;
 				}
-				break;
-			}
-			else
-			{
-				valid = false;
-				is.setstate(std::ios::failbit);
-				message("Only (Y)es or (N)o are acceptable");
-				break;
-			}
-		}*/
+			}*/
 
 			cout << " Price: ";
 			is >> price;
@@ -404,9 +400,9 @@ namespace aid {
 				Good::quantity(quantity);
 			}
 
-				cout << " Quantity needed: ";
-				is >> neededQty;
-				cin.ignore();
+			cout << " Quantity needed: ";
+			is >> neededQty;
+			cin.ignore();
 
 			if (is.fail())
 			{
@@ -424,9 +420,9 @@ namespace aid {
 			{
 				m_error.clear();
 			}
-			return is;
 		}
-	
+		return is;
+	}
 	bool Good::operator==(const char* sku) const
 	{
 		if (strcmp(sku, m_sku) == 0)
