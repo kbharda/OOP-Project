@@ -2,8 +2,8 @@
 //
 // Version 1.0
 // Date 11/03/2018
-// Author Kashyap Bharda
-// Description Milestone 1
+// Author Kashyap Bharda (140622176)
+// Description A class that holds the expiry date of the perishable items.
 //
 // Revision History
 // -----------------------------------------------------------

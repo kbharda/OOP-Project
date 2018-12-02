@@ -1,16 +1,18 @@
 #pragma once
-#define _CRT_SECURE_NO_WARNINGS
+
 // Final Project Milestone 2
 //
 // Version 1.0
 // Date 11/21/2018
-// Author Kashyap Bharda
-// Description THE ERROR MODULE
+// Author Kashyap Bharda (140622176)
+// Description THE ERROR MODULE(tracks the error state of client)
 //
 // Revision History
 // -----------------------------------------------------------
 // Name               Date                 Reason
 /////////////////////////////////////////////////////////////////
+
+#define _CRT_SECURE_NO_WARNINGS
 
 #ifndef AID_ERROR_H
 #define AID_ERROR_H

@@ -3,15 +3,15 @@
 //
 // Version 1.0
 // Date 11/24/2018
-// Author Kashyap Bharda
-// Description iGood Module
-//
+// Author Kashyap Bharda (140622176)
+// Description An interface to the Good hierarchy. This interface exposes the features of the hierarchy available to the application. Any “iGood” class can
 // Revision History
 // -----------------------------------------------------------
 // Name               Date                 Reason
 /////////////////////////////////////////////////////////////////
 
 #define _CRT_SECURE_NO_WARNINGS
+
 #ifndef AID_IGOOD_H
 #define AID_IGOOD_H
 

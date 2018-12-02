@@ -1,14 +1,18 @@
+#pragma once
+
 // Final Project Milestone 5
 //
 // Version 1.0
 // Date 11/29/2018
-// Author Kashyap Bharda
+// Author Kashyap Bharda (140622176)
 // Description A class that manages a perishable good object. This class inherits the structure of the “Good” class and manages a date.
 //
 // Revision History
 // -----------------------------------------------------------
 // Name               Date                 Reason
 /////////////////////////////////////////////////////////////////
+
+#define _CRT_SECURE_NO_WARNINGS
 
 #ifndef AID_PERISHABLE_H
 #define AID_PERISHABLE_H
@@ -17,7 +21,6 @@
 #include "Good.h"
 #include "Date.h"
 
-#endif // !AID_PERISHABLE_H
 
 namespace aid {
 
@@ -26,7 +29,7 @@ namespace aid {
 		//private data member
 	private:
 
-		Date m_ExpiryDate;
+		Date expiryDate;
 
 		//public data member
 	public:
@@ -39,3 +42,4 @@ namespace aid {
 		const Date& expiry() const;
 	};
 }
+#endif // !AID_PERISHABLE_H

@@ -2,7 +2,7 @@
 //
 // Version 1.0
 // Date 11/29/2018
-// Author Kashyap Bharda
+// Author Kashyap Bharda (140622176)
 // Description A class that manages a perishable good object. This class inherits the structure of the “Good” class and manages a date.
 //
 // Revision History
@@ -24,77 +24,74 @@ using namespace std;
 namespace aid {
 
 	// No argument constructor
-	// This default constructor passes the file record tag for perishable product ('P')
-	// To the base class constructor and seeers 
 	Perishable::Perishable() : Good('P')
 	{
-		//m_ExpiryDate;
+		m_error.clear();
 	}
 
-	// calls its base class version inserts a comma into the file record and appends the expiry date to the file record.
+	// this function calls its base class version inserts a comma into the file record and appends the expiry date to the file record.
 	std::fstream& Perishable::store(std::fstream& file, bool newLine) const
 	{
 		Good::store(file, false);
 		file << ',';
-		file << m_ExpiryDate;
-		;
+		file << expiryDate;
 		file << endl;
 
 		return file;
 	}
 
-	// calls its base class version passing as an argument, loads the expiry date, extracts a single character from the fstream object.
+	// this functions calls its base class version passing as an argument, loads the expiry date, extracts a single character from the fstream object.
 	std::fstream& Perishable::load(std::fstream& file)
 	{
 		Good::load(file);
-		file >> m_ExpiryDate;
+		file >> expiryDate;
 		file.ignore();
 
 		return file;
 	}
 
 	// Function does nothing if the current object is an error or safe empty state
-	// else it inserts the expiry date into the ostream object if linear is true adds the expiry date.
+	// if linear is true, adds the expiry date on the same line for an outcome that
 	std::ostream& Perishable::write(std::ostream& os, bool linear) const
 	{
-		os.fill(' ');
+		os.fill(' '); //Fill white spaces or 0(zeros)
 		Good::write(os, linear);
 
 		if (isClear() && !isEmpty()) {
 
 			if (linear == true)
 			{
-				m_ExpiryDate.write(os);
+				expiryDate.write(os);
 			}
 			else
 			{
 				os << endl;
 				os << " Expiry date: ";
-				m_ExpiryDate.write(os);
+				expiryDate.write(os);
 			}
 		}
 		return os;
 	}
 
 
-	//Function validates it's base class object data and prompts for expire date to store.
+	//This function will validate the base class object and prompt for expire date to be store.
 	//In a temporary Date object d date object is also an eeror state it will store the appropiate
-	//error message. If not in error state, function copy assigns the temp date object instance date object to  
+	
 	std::istream& Perishable::read(std::istream& is)
 	{
-		Date temp;
+		Date tempDate;
 		Good::read(is);
 
 		if (is.good())
 		{
 			std::cout << " Expiry date (YYYY/MM/DD): ";
-			temp.read(is);
+			tempDate.read(is);
 
-			if (temp.bad() == true)
+			if (tempDate.bad() == true)
 			{
 				is.setstate(std::ios::failbit);
 
-				switch (temp.errCode())
+				switch (tempDate.errCode())
 				{
 				case CIN_FAILED:
 					message("Invalid Date Entry");
@@ -114,7 +111,7 @@ namespace aid {
 			}
 			else
 			{
-				m_ExpiryDate = temp;
+				expiryDate = tempDate;
 			}
 		}
 		return is;
@@ -123,6 +120,6 @@ namespace aid {
 	//Function returns the expiry date for the perishable good.
 	const Date& Perishable::expiry() const
 	{
-		return m_ExpiryDate;
+		return expiryDate;
 	}
 }

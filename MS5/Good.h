@@ -1,10 +1,10 @@
 #pragma once
 
-// Final Project Milestone 2
+// Final Project Milestone 3
 //
 // Version 1.0
-// Date 11/21/2018
-// Author Kashyap Bharda 
+// Date 11/30/2018
+// Author Kashyap Bharda (140622176)
 // Description A class that manages a non-perishable good object.
 //
 // Revision History
@@ -75,8 +75,11 @@ namespace aid {
 		bool operator==(const char*) const;
 		double total_cost() const;
 		void quantity(int);
+		void itemPrice(double);
+		void needed(int);
 		bool isEmpty() const;
 		int qtyNeeded() const;
+		int type() const;
 		int quantity() const;
 		bool operator>(const char*) const;
 		bool operator>(const iGood&) const;
