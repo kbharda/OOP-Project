@@ -270,7 +270,7 @@ namespace aid {
 		}
 		else
 		{
-			os << " Sku: " << m_sku << endl
+			os  << " Sku: " << m_sku << endl
 				<< " Name (no spaces): " << m_name << endl
 				<< " Price: " << m_priceTaxesPre << endl;
 			if (m_taxable)
@@ -281,8 +281,8 @@ namespace aid {
 			{
 				os << " Price after tax: " << " N/A" << endl;
 			}
-			os << " Quantity on Hand: " << m_quantityOnHand << " " << m_unit << endl
-				<< " Quantity needed: " << m_quantityNeeded << endl;
+			os << " Quantity on Hand: " << m_quantityOnHand << " " << m_unit << endl;
+			os << " Quantity needed: " << m_quantityNeeded;
 		}
 		return os;
 	}
